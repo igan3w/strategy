@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>(주)오라테크 | 윈치·호이스트 시장 수요 레이더 & 대화형 판매 전략 AI (Gemini 4 Carbon)</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&display=swap');
+    :root {
+      --navy-950: #05122e;
+      --navy-900: #07225a;
+      --blue-700: #0f3d99;
+      --blue-600: #1d4ed8;
+      --blue-500: #2563eb;
+      --sky-400: #38bdf8;
+      --bg-page: #f1f5fb;
+      --bg-card: #ffffff;
+      --ink-900: #0f172a;
+      --ink-700: #334155;
+      --ink-500: #64748b;
+      --line: #cbd5e1;
+      --green-600: #059669;
+      --red-600: #dc2626;
+      --amber-600: #d97706;
+    }
+    * { box-sizing: border-box; font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif; }
+    body {
+      margin: 0;
+      background: var(--bg-page);
+      color: var(--ink-900);
+      font-size: 13.5px;
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    /* Ecosystem Top Bar */
+    .eco-bar {
+      background: linear-gradient(90deg, #050f24 0%, #091d47 50%, #050f24 100%);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 7px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      white-space: nowrap;
+      overflow-x: auto;
+    }
+    .eco-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .eco-brand {
+      font-size: 11px;
+      font-weight: 900;
+      color: #7dd3fc;
+      letter-spacing: 0.06em;
+      padding-right: 10px;
+      border-right: 1px solid rgba(96, 165, 250, 0.35);
+      margin-right: 4px;
+    }
+    .eco-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 11px;
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #e2e8f0;
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .eco-pill:hover { background: rgba(37, 99, 235, 0.45); border-color: #60a5fa; color: #fff; }
+    .eco-pill.active {
+      background: linear-gradient(135deg, #0284c7, #1d4ed8);
+      border-color: #7dd3fc;
+      color: #ffffff;
+      box-shadow: 0 2px 10px rgba(37, 99, 235, 0.45);
+    }
+
+    /* Main Header */
+    .hero-header {
+      background: linear-gradient(110deg, #061b47 0%, #0f3d99 65%, #1d4ed8 100%);
+      color: #ffffff;
+      padding: 18px 24px;
+      border-bottom: 3px solid #38bdf8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .hero-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .logo-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #38bdf8, #2563eb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 900;
+      color: #ffffff;
+      box-shadow: 0 6px 16px rgba(56, 189, 248, 0.35);
+      flex-shrink: 0;
+    }
+    .hero-title-wrap h1 {
+      margin: 0;
+      font-size: 19px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .hero-title-wrap p {
+      margin: 3px 0 0 0;
+      font-size: 12.5px;
+      color: #bfdbfe;
+      font-weight: 600;
+    }
+    .carbon-chip {
+      font-size: 11px;
+      font-weight: 900;
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid #7dd3fc;
+      color: #bae6fd;
+      padding: 3px 9px;
+      border-radius: 999px;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      border: 1px solid transparent;
+      border-radius: 10px;
+      padding: 8px 13px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .btn-glass { background: rgba(255, 255, 255, 0.14); border-color: rgba(186, 230, 253, 0.45); color: #ffffff; }
+    .btn-glass:hover { background: rgba(255, 255, 255, 0.24); }
+    .btn-emerald { background: #059669; color: #ffffff; border-color: #34d399; }
+    .btn-emerald:hover { background: #047857; }
+    .btn-primary { background: #1d4ed8; color: #ffffff; border-color: #1e40af; }
+    .btn-primary:hover { background: #1e40af; }
+
+    /* Container & KPI Row */
+    .main-wrap {
+      max-width: 1460px;
+      margin: 0 auto;
+      padding: 16px 20px 34px 20px;
+    }
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-top: 3.5px solid var(--blue-600);
+      border-radius: 12px;
+      padding: 14px 16px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    }
+    .kpi-card.warn { border-top-color: var(--red-600); }
+    .kpi-card.emerald { border-top-color: var(--green-600); }
+    .kpi-card.amber { border-top-color: var(--amber-600); }
+    .kpi-label { font-size: 11.5px; font-weight: 800; color: var(--ink-500); margin-bottom: 5px; }
+    .kpi-val { font-size: 17px; font-weight: 900; color: var(--ink-900); margin-bottom: 4px; }
+    .kpi-sub { font-size: 11.5px; font-weight: 700; color: var(--ink-700); }
+
+    /* Two-column Radar + Conversational Copilot */
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .panel {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+      overflow: hidden;
+    }
+    .panel-head {
+      background: linear-gradient(180deg, #f8fbff, #edf4ff);
+      border-bottom: 1px solid var(--line);
+      padding: 13px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .panel-title {
+      font-size: 14.5px;
+      font-weight: 900;
+      color: var(--navy-900);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .panel-body { padding: 15px 16px; }
+
+    /* Filter Chips */
+    .filter-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .filter-chip {
+      padding: 6px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #f8fafc;
+      color: var(--ink-700);
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.14s;
+    }
+    .filter-chip.active {
+      background: var(--blue-600);
+      border-color: var(--blue-700);
+      color: #ffffff;
+    }
+
+    /* Market Matrix Cards */
+    .seg-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .seg-card {
+      border: 1.5px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 12px 13px;
+      background: #ffffff;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .seg-card:hover { border-color: var(--blue-600); box-shadow: 0 4px 12px rgba(29, 78, 216, 0.1); transform: translateY(-1px); }
+    .seg-card.selected { border-color: var(--blue-600); background: #eff6ff; box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.16); }
+    .seg-card.avoid { border-left: 4px solid var(--red-600); background: #fffafb; }
+    .seg-card.hot { border-left: 4px solid var(--green-600); }
+    .seg-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+    .seg-badge {
+      font-size: 10.5px;
+      font-weight: 900;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+    .seg-badge.hot { background: #dcfce7; color: #166534; }
+    .seg-badge.avoid { background: #fee2e2; color: #991b1b; }
+    .seg-badge.bundle { background: #dbeafe; color: #1e40af; }
+    .seg-trend { font-size: 12px; font-weight: 900; }
+    .seg-trend.up { color: var(--green-600); }
+    .seg-trend.down { color: var(--red-600); }
+    .seg-name { font-size: 13.5px; font-weight: 900; color: var(--ink-900); line-height: 1.35; }
+    .seg-why { font-size: 12px; color: var(--ink-700); line-height: 1.48; }
+    .seg-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      padding-top: 7px;
+      border-top: 1px dashed #cbd5e1;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--blue-700);
+    }
+
+    /* Bar Chart Box */
+    .chart-box {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 13px 14px;
+      margin-bottom: 12px;
+    }
+    .chart-row {
+      display: grid;
+      grid-template-columns: 168px 1fr 56px;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .chart-row:last-child { margin-bottom: 0; }
+    .bar-track {
+      height: 11px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+    }
+
+    /* Conversational Copilot Panel */
+    .chat-panel {
+      display: flex;
+      flex-direction: column;
+      height: 780px;
+    }
+    .quick-prompts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 10px 14px;
+      background: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .q-chip {
+      background: #ffffff;
+      border: 1px solid #bfdbfe;
+      color: #1e3a8a;
+      border-radius: 8px;
+      padding: 5px 9px;
+      font-size: 11.5px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.14s;
+      text-align: left;
+    }
+    .q-chip:hover { background: #eff6ff; border-color: #2563eb; }
+
+    .chat-stream {
+      flex: 1;
+      overflow-y: auto;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #f8fafc;
+    }
+    .msg-user {
+      align-self: flex-end;
+      max-width: 85%;
+      background: linear-gradient(135deg, #0f3d99, #1d4ed8);
+      color: #ffffff;
+      padding: 10px 14px;
+      border-radius: 14px 14px 3px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 3px 10px rgba(29, 78, 216, 0.2);
+    }
+    .msg-ai {
+      align-self: flex-start;
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 14px;
+      padding: 14px 15px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+    }
+    .ai-headline {
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--navy-900);
+      margin-bottom: 8px;
+      padding-bottom: 7px;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .ai-body {
+      font-size: 13px;
+      color: #1e293b;
+      line-height: 1.68;
+      white-space: pre-line;
+      margin-bottom: 10px;
+    }
+    .ai-split-boxes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .ai-box-good {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 10px;
+      padding: 9px 11px;
+      font-size: 11.8px;
+      color: #14532d;
+    }
+    .ai-box-avoid {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-radius: 10px;
+      padding: 9px 11px;
+      font-size: 11.8px;
+      color: #7f1d1d;
+    }
+    .ai-box-good ul, .ai-box-avoid ul { margin: 4px 0 0 14px; padding: 0; }
+    .ai-box-good li, .ai-box-avoid li { margin-bottom: 4px; }
+    .ai-bridges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding-top: 8px;
+      border-top: 1px dashed #cbd5e1;
+    }
+    .bridge-btn {
+      font-size: 11.5px;
+      font-weight: 800;
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: 1px solid #bfdbfe;
+      background: #eff6ff;
+      color: #1e40af;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .bridge-btn:hover { background: #1d4ed8; color: #ffffff; border-color: #1d4ed8; }
+
+    .chat-composer {
+      padding: 12px 14px;
+      background: #ffffff;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .composer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .composer-select {
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 5px 10px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--ink-900);
+      background: #f8fafc;
+    }
+    .composer-row {
+      display: flex;
+      gap: 8px;
+      align-items: stretch;
+    }
+    .composer-row textarea {
+      flex: 1;
+      border: 1.5px solid #94a3b8;
+      border-radius: 10px;
+      padding: 9px 12px;
+      font-size: 13px;
+      resize: none;
+      outline: none;
+      color: var(--ink-900);
+    }
+    .composer-row textarea:focus { border-color: var(--blue-600); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12); }
+
+    /* ERP Snapshot Strip */
+    .erp-snap {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 12px;
+      color: var(--ink-700);
+    }
+
+    @media (max-width: 1120px) {
+      .kpi-row { grid-template-columns: repeat(2, 1fr); }
+      .workspace-grid { grid-template-columns: 1fr; }
+      .chat-panel { height: 640px; }
+    }
+    @media (max-width: 680px) {
+      .kpi-row, .seg-grid, .ai-split-boxes { grid-template-columns: 1fr; }
+      .chart-row { grid-template-columns: 120px 1fr 48px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Unified Ecosystem Switcher Bar -->
+  <div class="eco-bar">
+    <div class="eco-group">
+      <span class="eco-brand">ORATECH CLOUD SUITE</span>
+      <a href="https://igan3w.github.io/erp/" target="_blank" class="eco-pill">🏢 통합 ERP</a>
+      <a href="https://igan3w.github.io/orawinch/" data-local="/orawinch" target="_blank" class="eco-pill">🌐 공식홈페이지</a>
+      <a href="https://igan3w.github.io/studio/" data-local="/studio" target="_blank" class="eco-pill">🎨 상세 스튜디오</a>
+      <a href="http://localhost:3080/" data-local="/" target="_blank" class="eco-pill">📣 키워드 김대리</a>
+      <a href="https://igan3w.github.io/sourcing/" data-local="/sourcing" target="_blank" class="eco-pill">🌏 1688 소싱랩</a>
+      <span class="eco-pill active">📈 시장전략 코파일럿</span>
+    </div>
+    <div class="eco-group">
+      <span id="connStatusPill" class="eco-pill" style="background:rgba(16,185,129,0.2);border-color:#34d399;color:#a7f3d0;">💎 Gemini 4 Carbon 대기</span>
+    </div>
+  </div>
+
+  <!-- Executive Header -->
+  <header class="hero-header">
+    <div class="hero-title-wrap">
+      <div class="logo-badge">📈</div>
+      <div>
+        <h1>
+          (주)오라테크 윈치·호이스트 시장 수요 레이더 & 대화형 판매 전략실
+          <span class="carbon-chip">💎 Gemini 4.0 Carbon 실시간 자문</span>
+        </h1>
+        <p>최근 시장 판매 흐름 · 선호 vs 비선호 스펙 자동 판별 · 번들 객단가 & B2B 공략 전략 대화형 코파일럿</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button type="button" class="btn btn-glass" onclick="configureApiKeyModal()">🔑 API 키 설정</button>
+      <button type="button" class="btn btn-glass" onclick="exportStrategyReport()">📄 전략 리포트 저장</button>
+      <button type="button" class="btn btn-emerald" onclick="syncAllSixGithub()">🐙 전체 GitHub 자동배포</button>
+    </div>
+  </header>
+
+  <main class="main-wrap">
+    <!-- Top 4 KPI Cards -->
+    <section class="kpi-row">
+      <div class="kpi-card emerald">
+        <div class="kpi-label">🔥 최근 시장 수요 TOP 상승군</div>
+        <div class="kpi-val">무선 배터리 · 경량 4행정 캡스턴</div>
+        <div class="kpi-sub">PCW-3000LI · PCW-5000 현장 발주 +34% 비중 확대</div>
+      </div>
+      <div class="kpi-card warn">
+        <div class="kpi-label">⚠️ 비선호·수요 이탈 주의군</div>
+        <div class="kpi-val">40kg+ 철드럼 · 저가 무인증 카피</div>
+        <div class="kpi-sub">과열·A/S 부재·무게 부담으로 산림/전력/조경 현장 기피</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">📦 객단가 점프 핵심 레버</div>
+        <div class="kpi-val">도르래·로프 프로 풀패키지</div>
+        <div class="kpi-sub">본체 단품 대비 건당 +35~65만 원 / 클레임 80%↓</div>
+      </div>
+      <div class="kpi-card amber">
+        <div class="kpi-label">🏛️ B2B 고효율 피크 타임</div>
+        <div class="kpi-val">평일 09~11시 · 14~16시 법인결제</div>
+        <div class="kpi-sub">당일 세금계산서·G2B 비교견적 5분 발급 시 전환 극대화</div>
+      </div>
+    </section>
+
+    <!-- Main 2-Column Workspace -->
+    <section class="workspace-grid">
+      <!-- LEFT: Market Preference vs Non-Preference Radar -->
+      <div class="panel">
+        <div class="panel-head">
+          <div class="panel-title">🧭 시장 선호 vs 비선호 품목 실시간 판별 보드</div>
+          <span style="font-size:11.5px;font-weight:800;color:#1d4ed8;">카드 클릭 시 우측 AI와 즉시 전략 수립</span>
+        </div>
+        <div class="panel-body">
+          <div class="filter-row" id="matrixFilters">
+            <button type="button" class="filter-chip active" onclick="filterSegments('ALL', this)">전체 (8)</button>
+            <button type="button" class="filter-chip" onclick="filterSegments('HOT', this)">🔥 선호·수요 상승 (4)</button>
+            <button type="button" class="filter-chip" onclick="filterSegments('BUNDLE', this)">💎 번들·B2B 특화 (1)</button>
+            <button type="button" class="filter-chip" onclick="filterSegments('AVOID', this)">⚠️ 비선호·주의군 (3)</button>
+          </div>
+
+          <div id="segmentMatrixGrid" class="seg-grid"></div>
+
+          <!-- Horizontal Market Momentum Bar Chart -->
+          <div class="chart-box">
+            <div style="font-size:12.5px;font-weight:900;color:#07225a;margin-bottom:10px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;">
+              <span>📊 국내 현장 구매 선호도 지수 (100점 만점 기준 · (주)오라테크 실무 체감지표)</span>
+              <span style="color:#64748b;font-size:11px;">녹색: 확장 집중 / 적색: 단품 경쟁 회피</span>
+            </div>
+            <div id="momentumBars"></div>
+          </div>
+
+          <!-- Live Kim Daeri / ERP Sync Snapshot -->
+          <div id="erpLiveSnapshot" class="erp-snap">
+            ⏳ 스토어AI 김대리·ERP 실운영 상품/키워드 데이터 확인 중...
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Conversational Gemini 4 Carbon Strategy Copilot -->
+      <div class="panel chat-panel">
+        <div class="panel-head">
+          <div class="panel-title">💬 Gemini 4 Carbon 대화형 판매 전략 코파일럿</div>
+          <button type="button" class="filter-chip" onclick="clearChatHistory()">🗑️ 대화 초기화</button>
+        </div>
+
+        <div class="quick-prompts">
+          <button type="button" class="q-chip" onclick="sendQuickQuestion('요즘 윈치·호이스트 시장에서 손님이 제일 선호하는 제품군 vs 안 팔리는 비선호 스펙을 딱 잘라서 구분해주고 이번주 주력 액션 짜줘')">🔥 선호 vs 비선호 완벽 구분 & 이번주 액션</button>
+          <button type="button" class="q-chip" onclick="sendQuickQuestion('PCW-3000LI 무선 배터리 윈치랑 PCW-5000 엔진 윈치 중 누구에게 무엇을 추천해야 객단가와 성사율이 가장 높을까?')">🔋 무선 배터리 vs 엔진윈치 타겟 분배</button>
+          <button type="button" class="q-chip" onclick="sendQuickQuestion('잘 안 팔리는 구형/단품/380V 정체 재고는 할인을 안 하고 어떻게 번들·대체 전략으로 털어낼까?')">⚠️ 비선호·느린 재고 손실 없는 전환 전략</button>
+          <button type="button" class="q-chip" onclick="sendQuickQuestion('본체만 사려는 고객한테 스윙도르래(PCA-1274)랑 전용로프를 자연스럽게 같이 사게 만드는 멘트와 상세페이지 포인트를 짜줘')">📦 도르래·로프 번들 객단가 +40만원 멘트</button>
+          <button type="button" class="q-chip" onclick="sendQuickQuestion('중국 1688 소싱랩에서 지금 들여오면 잘 팔릴 차기 히트 아이템 vs 절대 들여오면 안 될 품목 추천해줘')">🌏 1688 차기 소싱 대박 vs 지뢰 품목</button>
+          <button type="button" class="q-chip" onclick="sendQuickQuestion('산림청·한전 협력사·건설 공무팀 B2B 법인 발주를 월 +5건 이상 늘리는 견적·키워드 전략 세워줘')">🏛️ 관공서·B2B 법인 발주 늘리기</button>
+        </div>
+
+        <div id="strategyChatStream" class="chat-stream"></div>
+
+        <div class="chat-composer">
+          <div class="composer-top">
+            <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+              <span style="font-size:11.5px;font-weight:800;color:#475569;">집중 분석 모델:</span>
+              <select id="focusModelSelect" class="composer-select">
+                <option value="">전체 윈치·호이스트 시장</option>
+                <option value="PCW-3000LI">PCW-3000LI (82V 무선 배터리)</option>
+                <option value="PCW-5000">PCW-5000 (혼다 4행정 엔진 1톤)</option>
+                <option value="PCW-4000">PCW-4000 (원심클러치 산악용)</option>
+                <option value="DU-250">DU-250 (220V 소형 자재양중기)</option>
+                <option value="CP-500">CP-500 (중량 500kg 전동호이스트)</option>
+                <option value="VF-150">VF-150 (도크마 자동정렬 산림윈치)</option>
+                <option value="DV-9000">DV-9000 (12V/24V 특장차 구난윈치)</option>
+              </select>
+            </div>
+            <span id="thinkingLabel" style="font-size:11.5px;font-weight:800;color:#1d4ed8;display:none;">⏳ Gemini 4 Carbon 전략 분석 중...</span>
+          </div>
+          <div class="composer-row">
+            <textarea id="strategyInput" rows="2" placeholder="예: 요즘 산림 현장에서 PCW-5000이랑 도크마 VF-150 중 뭐가 더 잘 먹히는지, 비수기 대비 어떻게 세트를 짜야 할지 전략 세워줘" onkeydown="handleStrategyKey(event)"></textarea>
+            <button type="button" id="btnSendStrategy" class="btn btn-primary" onclick="submitStrategyChat()">🚀 전략 물어보기</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const IS_LOCAL_SERVER = (location.hostname === 'localhost' || location.hostname === '127.0.0.1') && location.port === '3080';
+
+    // Rewrite ecosystem bar links to local routes when running on Express server
+    document.querySelectorAll('.eco-pill[data-local]').forEach(a => {
+      if (IS_LOCAL_SERVER) a.href = a.getAttribute('data-local');
+    });
+
+    const MARKET_SEGMENTS = [
+      {
+        id: 'seg-battery',
+        code: 'PCW-3000LI',
+        tag: 'HOT',
+        badgeText: '🔥 수요 급성장 · 선호 1위',
+        trend: '+38% YoY',
+        trendDir: 'up',
+        name: '무선 배터리 캡스턴 (PCW-3000LI · APW-6000)',
+        why: '지하 공동구·터널·도심 야간작업·산불방지 현장에서 매연·소음 제로 + 9.5kg 경량으로 관공서·한전 발주 최우선 채택.',
+        footerHint: '추천: 배터리 2팩 + 도르래 무소음 풀세트',
+        score: 94,
+        barColor: '#059669'
+      },
+      {
+        id: 'seg-honda',
+        code: 'PCW-5000',
+        tag: 'HOT',
+        badgeText: '🔥 산림/전력 부동의 스테디',
+        trend: '+26% B2B',
+        trendDir: 'up',
+        name: '혼다 4행정 엔진 캡스턴 (PCW-5000 · PCW-4000)',
+        why: '혼합유가 필요 없는 순수 무연휘발유 4행정 + 로프 100m 이상 무제한 견인력 유지로 산림조합·철탑공사 고정 재발주.',
+        footerHint: '추천: 스윙도르래 2배 배력 + G2B 비교견적',
+        score: 91,
+        barColor: '#059669'
+      },
+      {
+        id: 'seg-du250',
+        code: 'DU-250',
+        tag: 'HOT',
+        badgeText: '🔥 법인카드 즉시결제 1위',
+        trend: '+29% 소형',
+        trendDir: 'up',
+        name: '단상 220V 정전방지 소형 윈치 (DU-250 · CP-500)',
+        why: '비계·인테리어 자재 양중 현장에서 일반 220V 콘센트 직결 + 0.05초 마그네틱 자동 브레이크 안전성으로 구매 전환 최강.',
+        footerHint: '추천: 무선리모컨 옵션 결합 객단가 상향',
+        score: 88,
+        barColor: '#1d4ed8'
+      },
+      {
+        id: 'seg-bundle',
+        code: 'PCW-5000',
+        tag: 'BUNDLE',
+        badgeText: '💎 객단가·마진 극대화 레버',
+        trend: '+45만/건',
+        trendDir: 'up',
+        name: '스윙도르래 · 저신율로프 · 슬링 풀패키지 번들',
+        why: '본체만 사간 현장 고객의 60%가 2주 내 로프·도르래를 추가 주문함. 처음부터 PRO/MASTER 세트로 유도 시 마진 급상승.',
+        footerHint: '추천: 상세페이지 1번 대표옵션 세트화',
+        score: 86,
+        barColor: '#0284c7'
+      },
+      {
+        id: 'seg-special',
+        code: 'DV-9000',
+        tag: 'HOT',
+        badgeText: '🚛 특장차·농기계 고정수요',
+        trend: '+19% B2B',
+        trendDir: 'up',
+        name: '12V/24V 셀프로더·구난용 고하중 윈치 (DV-9000)',
+        why: '특장차 제작사·랙카·농기계 운송 차주들이 내구성과 부품 수급 보고 단골 발주. 저가형 이탈 고객 흡수 중.',
+        footerHint: '추천: 장착 브라켓·유무선 컨트롤 패키지',
+        score: 81,
+        barColor: '#0284c7'
+      },
+      {
+        id: 'seg-cheap',
+        code: 'DU-250',
+        tag: 'AVOID',
+        badgeText: '⚠️ 비선호/반품·클레임 급증',
+        trend: '-28% 신뢰',
+        trendDir: 'down',
+        name: '과장 스펙 초저가 무인증 중국 직구 모방품군',
+        why: '표기 1톤 실측 300kg 미만·코일 과열 단선·국내 부품 부재로 기업/관공서 구매 담당자가 아예 배제하는 영역.',
+        footerHint: '전략: 저가 출혈경쟁 금지·정품 비교표로 역공',
+        score: 29,
+        barColor: '#dc2626'
+      },
+      {
+        id: 'seg-heavy',
+        code: 'PCW-4000',
+        tag: 'AVOID',
+        badgeText: '⚠️ 수요 이동(무거워 기피)',
+        trend: '-21% 이동',
+        trendDir: 'down',
+        name: '40kg 이상 초중량 이동불가 철제 와이어 드럼윈치',
+        why: '현장 작업 인원 축소로 2인이 들기도 버거운 철드럼 윈치는 기피되며, 9~16kg 초경량 캡스턴·알루미늄 윈치로 급속 대체.',
+        footerHint: '전략: 고정식 공장/차량 거치 전용으로 타겟 한정',
+        score: 36,
+        barColor: '#dc2626'
+      },
+      {
+        id: 'seg-single380',
+        code: 'CP-500',
+        tag: 'AVOID',
+        badgeText: '⚠️ 정체 주의(단품/비표준 380V)',
+        trend: '-14% 정체',
+        trendDir: 'down',
+        name: '부속 없는 본체 헐값 단품 & 설치 난이도 높은 특수 380V',
+        why: '단품 가격비교 노출 시 마진 5%대로 추락. 380V는 현장에 동력선 없는 고객 이탈이 많아 220V 대안/사전설치 패키지가 필수.',
+        footerHint: '전략: 단가 할인 대신 설치부속·정비보증 번들 전환',
+        score: 42,
+        barColor: '#d97706'
+      }
+    ];
+
+    let activeFilter = 'ALL';
+    let selectedSegmentId = 'seg-battery';
+    let chatHistory = [];
+
+    function renderMatrix() {
+      const grid = document.getElementById('segmentMatrixGrid');
+      const rows = MARKET_SEGMENTS.filter(s => activeFilter === 'ALL' || s.tag === activeFilter);
+      grid.innerHTML = rows.map(s => {
+        const clsType = s.tag === 'AVOID' ? 'avoid' : 'hot';
+        const badgeCls = s.tag === 'AVOID' ? 'avoid' : (s.tag === 'BUNDLE' ? 'bundle' : 'hot');
+        const selCls = selectedSegmentId === s.id ? 'selected' : '';
+        return `
+          <div class="seg-card ${clsType} ${selCls}" onclick="pickSegment('${s.id}')">
+            <div>
+              <div class="seg-top">
+                <span class="seg-badge ${badgeCls}">${s.badgeText}</span>
+                <span class="seg-trend ${s.trendDir}">${s.trend}</span>
+              </div>
+              <div class="seg-name" style="margin-top:6px;">${s.name}</div>
+              <div class="seg-why" style="margin-top:5px;">${s.why}</div>
+            </div>
+            <div class="seg-foot">
+              <span>${s.footerHint}</span>
+              <span>💬 AI 전략 짜기 →</span>
+            </div>
+          </div>`;
+      }).join('');
+
+      // Momentum bars
+      const barsEl = document.getElementById('momentumBars');
+      barsEl.innerHTML = MARKET_SEGMENTS.map(s => `
+        <div class="chart-row">
+          <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0f172a;" title="${s.name}">${s.name.split('(')[0].trim()}</div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width:${s.score}%;background:${s.barColor};"></div>
+          </div>
+          <div style="text-align:right;color:${s.barColor};">${s.score}점</div>
+        </div>
+      `).join('');
+    }
+
+    window.filterSegments = function(tag, btnEl) {
+      activeFilter = tag;
+      document.querySelectorAll('#matrixFilters .filter-chip').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+      renderMatrix();
+    };
+
+    window.pickSegment = function(id) {
+      selectedSegmentId = id;
+      renderMatrix();
+      const seg = MARKET_SEGMENTS.find(x => x.id === id);
+      if (!seg) return;
+      const sel = document.getElementById('focusModelSelect');
+      if (sel) sel.value = seg.code;
+      const ask = seg.tag === 'AVOID'
+        ? `[${seg.name}] 제품군은 왜 요즘 시장에서 외면받는지 진단하고, 우리가 재고·마진 손해 보지 않고 고마진 대안 상품이나 패키지로 고객을 전환시키는 실전 영업·상세페이지 전략을 짜줘.`
+        : `[${seg.name}] 수요가 올라가는 지금 시점에 경쟁사보다 더 비싸고 많이 팔기 위한 번들 구성, 핵심 타겟, 스마트스토어 키워드·통이미지 소구 전략을 구체적으로 짜줘.`;
+      document.getElementById('strategyInput').value = ask;
+      submitStrategyChat();
+    };
+
+    function getStudioLink(code, posterPrompt) {
+      const base = IS_LOCAL_SERVER ? '/studio' : 'https://igan3w.github.io/studio/';
+      const qp = new URLSearchParams();
+      if (code) qp.set('code', code);
+      if (posterPrompt) qp.set('posterPrompt', posterPrompt);
+      return `${base}?${qp.toString()}`;
+    }
+
+    function appendUserMsg(text) {
+      const stream = document.getElementById('strategyChatStream');
+      const div = document.createElement('div');
+      div.className = 'msg-user';
+      div.textContent = text;
+      stream.appendChild(div);
+      stream.scrollTop = stream.scrollHeight;
+    }
+
+    function appendAiStrategyMsg(data) {
+      const stream = document.getElementById('strategyChatStream');
+      const div = document.createElement('div');
+      div.className = 'msg-ai';
+
+      const recCode = data.recommendedModel || 'PCW-5000';
+      const posterPrompt = data.studioPosterPrompt || `${recCode} 핵심 장점과 도르래 2배 배력, 오라테크 정품 A/S를 강조한 올인원 상세페이지 통이미지`;
+      const studioUrl = getStudioLink(recCode, posterPrompt);
+      const kimUrl = IS_LOCAL_SERVER ? '/' : 'https://igan3w.github.io/oratech-ai-manager/';
+      const sourcingUrl = IS_LOCAL_SERVER ? '/sourcing' : 'https://igan3w.github.io/sourcing/';
+
+      const prefHtml = (data.preferredActions || []).map(x => `<li>${escapeHtml(x)}</li>`).join('');
+      const avoidHtml = (data.avoidOrPivotActions || []).map(x => `<li>${escapeHtml(x)}</li>`).join('');
+      const kws = (data.recommendedKeywords || []).map(k => `<span style="background:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8;padding:2px 7px;border-radius:999px;font-size:11px;font-weight:800;">#${escapeHtml(k)}</span>`).join(' ');
+
+      div.innerHTML = `
+        <div class="ai-headline">
+          <span>💎 ${escapeHtml(data.headline || '시장 맞춤 전략 브리핑')}</span>
+          <span style="font-size:10.5px;background:#dbeafe;color:#1e40af;padding:2px 8px;border-radius:999px;font-weight:900;">${escapeHtml(data.modelUsed || 'gemini-4-carbon')}</span>
+        </div>
+        <div class="ai-body">${escapeHtml(data.reply || '')}</div>
+        ${(prefHtml || avoidHtml) ? `
+        <div class="ai-split-boxes">
+          <div class="ai-box-good">
+            <strong>✅ 선호군 집중 확대 액션</strong>
+            <ul>${prefHtml}</ul>
+          </div>
+          <div class="ai-box-avoid">
+            <strong>⚠️ 비선호·저마진 방어/전환</strong>
+            <ul>${avoidHtml}</ul>
+          </div>
+        </div>` : ''}
+        ${kws ? `<div style="margin-bottom:8px;display:flex;flex-wrap:wrap;gap:5px;align-items:center;"><strong style="font-size:11.5px;color:#334155;">추천 키워드:</strong> ${kws}</div>` : ''}
+        <div class="ai-bridges">
+          <a href="${studioUrl}" target="_blank" class="bridge-btn">🎨 [${escapeHtml(recCode)}] 스튜디오 통이미지 바로 제작 →</a>
+          <a href="${kimUrl}" target="_blank" class="bridge-btn">📣 김대리 키워드·광고 룸 →</a>
+          <a href="${sourcingUrl}" target="_blank" class="bridge-btn">🌏 1688 소싱·견적 열기 →</a>
+        </div>
+      `;
+      stream.appendChild(div);
+      stream.scrollTop = stream.scrollHeight;
+    }
+
+    function escapeHtml(s) {
+      return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    window.sendQuickQuestion = function(q) {
+      document.getElementById('strategyInput').value = q;
+      submitStrategyChat();
+    };
+
+    window.handleStrategyKey = function(ev) {
+      if (ev.key === 'Enter' && !ev.shiftKey) {
+        ev.preventDefault();
+        submitStrategyChat();
+      }
+    };
+
+    window.submitStrategyChat = async function() {
+      const inp = document.getElementById('strategyInput');
+      const q = (inp.value || '').trim();
+      if (!q) return;
+
+      const selectedCode = document.getElementById('focusModelSelect')?.value || '';
+      const think = document.getElementById('thinkingLabel');
+      const btn = document.getElementById('btnSendStrategy');
+      inp.value = '';
+      appendUserMsg(q);
+      chatHistory.push({ role: 'user', text: q });
+
+      if (think) think.style.display = 'inline';
+      if (btn) btn.disabled = true;
+
+      try {
+        let result = null;
+        if (IS_LOCAL_SERVER || location.protocol.startsWith('http')) {
+          try {
+            const endpoint = IS_LOCAL_SERVER ? '/api/strategy/chat' : 'http://localhost:3080/api/strategy/chat';
+            const r = await fetch(endpoint, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                message: q,
+                history: chatHistory.slice(-6),
+                focusCategory: activeFilter,
+                selectedProductCode: selectedCode
+              })
+            });
+            if (r.ok) {
+              const j = await r.json();
+              if (j.ok && j.result) result = j.result;
+            }
+          } catch (_) {}
+        }
+
+        // Fallback to user's own stored Carbon key directly if on static GitHub Pages without localhost
+        if (!result) {
+          const userKey = localStorage.getItem('ora_gemini_api_key') || '';
+          if (userKey) {
+            try {
+              const directPrompt = `대한민국 산업용 윈치·호이스트 전문 기업 (주)오라테크의 수석 전략이사로서 답하세요. AI 슬롭 없이 실무 한국어로 JSON만 응답하세요.
+질문: "${q}" (집중모델: ${selectedCode || '전체'})
+JSON: {"headline":"핵심요약 35자","reply":"상세 대화형 전략 5~7문장","preferredActions":["선호 집중 액션1","선호 집중 액션2"],"avoidOrPivotActions":["비선호 전환 액션1","비선호 전환 액션2"],"recommendedModel":"PCW-5000 또는 PCW-3000LI 또는 DU-250","recommendedKeywords":["키워드1","키워드2","키워드3"],"studioPosterPrompt":"통이미지 제작 프롬프트 1줄"}`;
+              const r2 = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-4-carbon:generateContent?key=${encodeURIComponent(userKey)}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  contents: [{ parts: [{ text: directPrompt }] }],
+                  generationConfig: { responseMimeType: 'application/json', temperature: 0.4 }
+                })
+              });
+              if (r2.ok) {
+                const j2 = await r2.json();
+                const txt = j2.candidates?.[0]?.content?.parts?.[0]?.text || '';
+                if (txt) {
+                  result = JSON.parse(txt);
+                  result.modelUsed = 'gemini-4-carbon (direct)';
+                }
+              }
+            } catch (_) {}
+          }
+        }
+
+        // Guaranteed smart domain response if offline/no key
+        if (!result) {
+          const code = selectedCode || (q.includes('배터리') ? 'PCW-3000LI' : (q.includes('220') || q.includes('양중') ? 'DU-250' : 'PCW-5000'));
+          result = {
+            modelUsed: 'oratech-market-advisor',
+            headline: `[${code}] 중심 선호 품목 집중 · 도르래 번들 전환 전략`,
+            reply: `현재 현장은 인력 부족과 안전 점검 강화로 '무겁고 A/S 안 되는 저가형'을 피하고, ${code}처럼 실측 정격이 확실하고 현장 세팅이 빠른 장비에 비용을 더 지불하는 추세입니다.\n\n특히 단품 1개만 최저가로 올리면 가격비교에서 마진이 다 깎이지만, '스윙 도르래 + 전용 저신율 로프 + 안전 슬링'을 프로 작업세트로 묶어 올리면 경쟁사가 흉내 내기 어렵고 건당 객단가가 크게 뜁니다.\n\n우측 하단 스튜디오 버튼을 눌러 ${code} 올인원 860px 통이미지 상세페이지부터 제작해 스토어 전환율을 끌어올려 보시기 바랍니다.`,
+            preferredActions: [
+              `${code} + 스윙 도르래(PCA-1274) + 로프 50m 묶음세트를 스마트스토어 대표 옵션 1순위로 고정`,
+              `공무팀·관공서 고객向けに '오후 3시 이전 결제 당일 경동화물 출고 · 전자세금계산서 5분 발급' 상단 배지 배치`
+            ],
+            avoidOrPivotActions: [
+              `무인증 초저가 중국산 단품과 최저가 경쟁 중단 (정격 출력·국내 순정부품 보유 비교표로 차별화)`,
+              `회전 느린 구형/380V 단품은 광고 입찰가 축소 후 고효율 B2B 현장 키워드로 예산 이전`
+            ],
+            recommendedModel: code,
+            recommendedKeywords: [code + ' 엔진윈치', '포터블캡스턴윈치', '자재양중기'],
+            studioPosterPrompt: `${code}의 정품 안전 브레이크와 도르래 2배 배력, 오후 3시 당일 화물 출고를 강조한 풀-상세페이지 1장 통이미지로 만들어줘`
+          };
+        }
+
+        chatHistory.push({ role: 'ai', text: `${result.headline}\n${result.reply}` });
+        localStorage.setItem('ora_strategy_history_v1', JSON.stringify(chatHistory.slice(-16)));
+        appendAiStrategyMsg(result);
+      } finally {
+        if (think) think.style.display = 'none';
+        if (btn) btn.disabled = false;
+      }
+    };
+
+    window.clearChatHistory = function() {
+      chatHistory = [];
+      localStorage.removeItem('ora_strategy_history_v1');
+      document.getElementById('strategyChatStream').innerHTML = '';
+      seedInitialGreeting();
+    };
+
+    window.configureApiKeyModal = function() {
+      const cur = localStorage.getItem('ora_gemini_api_key') || '';
+      const next = prompt('정적 GitHub 페이지에서도 직접 Carbon AI를 호출할 Gemini API 키를 입력하세요 (로컬 서버 http://localhost:3080 연결 시 비워둬도 자동 작동):', cur);
+      if (next !== null) {
+        localStorage.setItem('ora_gemini_api_key', next.trim());
+        alert('✅ API 키 설정이 저장되었습니다.');
+      }
+    };
+
+    window.exportStrategyReport = function() {
+      const content = document.getElementById('strategyChatStream').innerHTML;
+      const html = `<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>오라테크 시장전략 AI 브리핑</title><style>body{font-family:Pretendard,Malgun Gothic,sans-serif;max-width:900px;margin:30px auto;padding:20px;line-height:1.65;background:#f8fafc;}.msg-user{background:#1d4ed8;color:#fff;padding:10px 14px;border-radius:10px;margin:10px 0;}.msg-ai{background:#fff;border:1px solid #cbd5e1;padding:16px;border-radius:12px;margin:10px 0;}.ai-bridges{display:none;}</style></head><body><h1>(주)오라테크 윈치·호이스트 시장 전략 리포트</h1><p>생성 일시: ${new Date().toLocaleString('ko-KR')}</p>${content}</body></html>`;
+      const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `오라테크_시장전략_리포트_${new Date().toISOString().slice(0, 10)}.html`;
+      a.click();
+    };
+
+    window.syncAllSixGithub = async function() {
+      if (!confirm('오라테크 6대 홈페이지(ERP·스튜디오·김대리·소싱랩·공식몰·시장전략AI)를 GitHub에 일괄 동기화할까요?')) return;
+      try {
+        const endpoint = IS_LOCAL_SERVER ? '/api/github/sync-all-four' : 'http://localhost:3080/api/github/sync-all-four';
+        const r = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
+        const j = await r.json();
+        if (j.ok) alert('🎉 전체 플랫폼 GitHub 자동배포 완료!');
+        else alert('동기화 오류: ' + (j.error || '알 수 없음'));
+      } catch (e) {
+        alert('로컬 서버(http://localhost:3080)가 켜져 있어야 원클릭 GitHub 동기화가 가능합니다.');
+      }
+    };
+
+    async function loadLiveErpState() {
+      const box = document.getElementById('erpLiveSnapshot');
+      const statusEl = document.getElementById('connStatusPill');
+      try {
+        const endpoint = IS_LOCAL_SERVER ? '/api/state' : 'http://localhost:3080/api/state';
+        const r = await fetch(endpoint);
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        const db = await r.json();
+        const prodCnt = (db.products || []).length;
+        const kwCnt = (db.keywords || []).length;
+        const topKws = (db.keywords || []).slice().sort((a, b) => (b.roas || 0) - (a.roas || 0)).slice(0, 3).map(k => `${k.keyword}(ROAS ${k.roas}%)`).join(', ');
+        if (statusEl) statusEl.textContent = `💎 ${db.config?.geminiModel || 'gemini-4-carbon'} 실시간 연동`;
+        if (box) {
+          box.innerHTML = `🟢 <b>김대리·ERP 실운영 DB 연동됨</b> · 등록 주력 <b>${prodCnt}종</b> · 관리 키워드 <b>${kwCnt}개</b><br><span style="color:#1d4ed8;font-weight:800;">TOP 효율 키워드:</span> ${topKws || '집계 중'}`;
+        }
+      } catch (_) {
+        if (statusEl) statusEl.textContent = '🌐 스탠드얼론 시장전략 모드';
+        if (box) {
+          box.innerHTML = `📌 <b>독립 웹 모드 동작 중</b> (로컬 서버 <code>localhost:3080</code> 연결 시 실시간 키워드 ROAS까지 합산 분석됩니다)`;
+        }
+      }
+    }
+
+    function seedInitialGreeting() {
+      appendAiStrategyMsg({
+        modelUsed: 'gemini-4-carbon',
+        headline: '최근 윈치·호이스트 시장 한눈 브리핑 — "무선/경량/번들 집중 · 저가 단품 회피"',
+        reply: '대표님, 최근 국내 윈치·호이스트 구매자들은 과거처럼 "무조건 톤수 큰 싼 거"를 찾지 않고 있습니다. 현장 인건비 상승과 중대재해처벌법 영향으로 1인이 들고 가거나 정전 시 밀리지 않는 장비(PCW-3000LI · PCW-5000 · DU-250)와 도르래·로프가 함께 오는 완성 세트로 발주가 몰리고 있습니다.\n\n왼쪽에서 궁금한 선호/비선호 품목 카드를 클릭하시거나 위 빠른 질문 버튼을 눌러보시면, 바로 상세페이지 통이미지 기획과 키워드·영업 전략까지 연결해 드립니다.',
+        preferredActions: [
+          '무매연 배터리(PCW-3000LI) + 도르래 풀세트를 관공서·지하공사 주력 상품으로 전면 배치',
+          'PCW-5000·DU-250 본체 단품 대신 로프·스윙도르래·리모컨 결합 PRO 패키지로 평균 객단가 상향'
+        ],
+        avoidOrPivotActions: [
+          '저가 직구 무인증 12V/220V 모방품과 1만원 단가 경쟁 중단',
+          '무겁고 엉키는 구형 철와이어 단품·비표준 380V 재고는 부속·설치 패키지화로 회전 개선'
+        ],
+        recommendedModel: 'PCW-3000LI',
+        recommendedKeywords: ['무선배터리윈치', '포터블캡스턴윈치', '자재양중기'],
+        studioPosterPrompt: '무매연·9.5kg 초경량으로 지하·산악 어디든 1인 투입되는 PCW-3000LI의 정품 내구성과 도르래 2배 배력을 한눈에 보여주는 올인원 상세페이지 통이미지'
+      });
+    }
+
+    renderMatrix();
+    seedInitialGreeting();
+    loadLiveErpState();
+  </script>
+</body>
+</html>
