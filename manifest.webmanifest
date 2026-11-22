@@ -1,0 +1,37 @@
+{
+  "id": "./",
+  "name": "윈치·호이스트 시장전략 AI",
+  "short_name": "시장전략 AI",
+  "description": "국내 윈치·호이스트 시장 수요 레이더 & 대화형 B2B 판매전략 코파일럿",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "any",
+  "background_color": "#f1f5fb",
+  "theme_color": "#07225a",
+  "lang": "ko-KR",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
